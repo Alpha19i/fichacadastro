@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>FICHA DE CADASTRAMENTO DO(A) SERVIDOR(A)</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     @page {
       size: A4;
@@ -18,48 +19,82 @@
     }
 
     .container {
-      width: 100%;
-      border: 1px solid #000;
-      padding: 10px;
+      max-width: 21cm;
+      /* border: 1px solid #000; */
+      padding: 20px;
+      margin: auto;
       box-sizing: border-box;
     }
 
-    h1, h2, h3 {
+    h1, h3 {
       text-align: center;
       margin: 5px 0;
       font-weight: bold;
+      font-size: 12px;
     }
-
+    
     h1 {
       font-size: 16px;
+      padding: 10px 0 0 0;
     }
-
+    
     h2 {
       font-size: 14px;
-      background: #eee;
-      border: 1px solid #000;
-      padding: 4px;
+      margin: 4px 0;
+      font-weight: bold;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 8px;
+      border-top: #000 solid 3px;
+      margin: 0;
     }
 
     td, th {
+      text-align: left;
       border: 1px solid #000;
-      padding: 4px;
+      height: 16px;
+      padding: 2px;
       vertical-align: middle;
     }
-
-    .assinatura {
-      margin-top: 30px;
-      text-align: center;
+    .border{
+      border-left: none;
+      border-right: none;
+    }
+    
+    .cabecalho{
+      font-size:7px;
+      font-weight: 600;
+      padding: 2px 10px;
+      background: #cdcdcd;
+      height: 8px;
+      /* border: 1px solid #000; */
     }
 
+    .assinatura { 
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size:10px;
+      text-align: center;
+      gap: 15px;
+    }
+    
+    .linha-assinatura { 
+      width: 350px; 
+      border-top: 1px solid black; 
+      margin: 2px auto; 
+    }
+    
+    .assinatura p {
+      text-align: center;
+      min-width: 100%;
+    }
     .assinatura div {
-      margin-top: 40px;
+      font-size:8px;
+      font-weight: 600;
+      margin-top: 20px;
     }
 
     .footer {
@@ -67,142 +102,291 @@
       font-size: 11px;
       margin-top: 20px;
     }
+    .titles {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
+      padding-bottom: 10px;
+      height: 90px;
+    }
+    .perfil {
+      border: #000 solid 1px;
+      min-width: 3cm;
+      max-width: 3cm;
+      min-height: 4cm;
+      max-height: 4cm;
+      position: relative; 
+      top: 40px;
+      background: #fff;
+    }
+    .text{
+      margin-top: 30px;
+      width: 100% ;
+    }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <h1>PREFEITURA MUNICIPAL DE JUNCO DO MARANHÃO - MA</h1>
-    <h3>CNPJ: 01.612.334/0001-89</h3>
-    <h3>RUA MARCELO MARTINS DE MOURA, 111 – CENTRO – JUNCO DO MA</h3>
-    <h3>DEPARTAMENTO DE RECURSOS HUMANOS</h3>
+    <div class="titles">
+      <img src="/logo.jpg" height="50px" alt="logo">
+      <div class="text">
+        <h3>PREFEITURA MUNICIPAL DE JUNCO DO MARANHÃO - MA</h3>
+        <h3>CNPJ: 01.612.334/0001-89</h3>
+        <h3>RUA MARCELO MARTINS DE MOURA, 111 – CENTRO – JUNCO DO MA</h3>
+        <h3>DEPARTAMENTO DE RECURSOS HUMANOS</h3>
+      </div>
+      <div class="perfil">
+        <!-- <img src="/logo.jpg" height="100%" width="100%" alt="logo"> -->
+      </div>
+    </div>
+
+    <hr color="#000">
     <h1>FICHA DE CADASTRAMENTO DO(A) SERVIDOR(A)</h1>
 
     <h2>1 - DADOS PESSOAIS</h2>
     <table>
+      <colgroup>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+      </colgroup>
+      <tr class="cabecalho">
+        <td class="border cabecalho" colspan="1">MATRÍCULA</td>
+        <td class="cabecalho" colspan="8">NOME DO(A) SERVIDOR(A)</td>
+        <td class=" border cabecalho" colspan="1">NASCIMENTO</td>
+      </tr>
       <tr>
-        <td>MATRÍCULA</td>
-        <td colspan="2"></td>
-        <td>NOME DO(A) SERVIDOR(A)</td>
+        <td class="border" colspan="1"></td>
+        <td colspan="8"></td>
+        <td class="border" colspan="1"></td>
+      </tr>
+      <tr>
+        <td class="border cabecalho" colspan="1">SEXO</td>
+        <td class="cabecalho" colspan="3">ESTADO CIVIL</td>
+        <td class="cabecalho" colspan="5">NATURALIDADE</td>  
+        <td class="border cabecalho" colspan="1">UF</td>
+      </tr>
+      <tr>
+        <td class="border" colspan="1"></td>
         <td colspan="3"></td>
+        <td colspan="5"></td>  
+        <td class="border" colspan="1"></td>
       </tr>
       <tr>
-        <td>NASCIMENTO</td>
-        <td></td>
-        <td>SEXO</td>
-        <td></td>
-        <td>ESTADO CIVIL</td>
-        <td></td>
-        <td>NATURALIDADE / UF</td>
+        <td class="border cabecalho" style="border-right: #000 solid 1px;" colspan="5">NOME DA MÃE</td>
+        <td class="border cabecalho" colspan="5">NOME DO PAI</td>
       </tr>
       <tr>
-        <td>NOME DA MÃE</td>
+        <td class="border" style="border-right: #000 solid 1px;" colspan="5"></td>
+        <td class="border" colspan="5"></td>
+      </tr>
+      <tr>
+        <td class="border cabecalho" colspan="5">ENDEREÇO</td>
+        <td class="cabecalho" colspan="1">NUM</td>
+        <td class="border cabecalho" colspan="4">COMPLEMENTO</td>
+      </tr>
+      <tr>
+        <td class="border" colspan="5"></td>
+        <td colspan="1"></td>
+        <td class="border" colspan="10"></td>
+      </tr>
+      <tr>
+        <td class="border cabecalho" colspan="4">BAIRRO</td>
+        <td class="cabecalho" colspan="5">CIDADE</td>
+        <td class="border cabecalho" colspan="1">CEP</td>
+      </tr>
+      <tr>
+        <td class="border" colspan="4"></td>
+        <td colspan="5"></td>
+        <td class="border" colspan="1"></td>
+      </tr>
+      <tr>
+        <td class="border cabecalho" colspan="2">TELEFONE FIXO</td>
+        <td class="cabecalho" colspan="3">CELULAR</td>
+        <td class="border cabecalho" colspan="5">EMAIL</td>
+      </tr>
+      <tr>
+        <td class="border" colspan="2"></td>
         <td colspan="3"></td>
-        <td>NOME DO PAI</td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>ENDEREÇO</td>
-        <td colspan="3"></td>
-        <td>Nº / COMPL.</td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>BAIRRO</td>
-        <td colspan="2"></td>
-        <td>CIDADE</td>
-        <td colspan="2"></td>
-        <td>CEP</td>
-      </tr>
-      <tr>
-        <td>TELEFONE FIXO</td>
-        <td></td>
-        <td>CELULAR</td>
-        <td></td>
-        <td>EMAIL</td>
-        <td colspan="2"></td>
+        <td class="border" colspan="5"></td>
       </tr>
     </table>
 
     <h2>2 - DOCUMENTOS</h2>
     <table>
+      <colgroup>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+      </colgroup>
       <tr>
-        <td>CPF</td>
-        <td></td>
-        <td>PIS/PASEP</td>
-        <td></td>
-        <td>ESCOLARIDADE</td>
+        <td class="border cabecalho" colspan="3">CPF</td>
+        <td class="cabecalho" colspan="3">PIS/PASEP</td>
+        <td class="border cabecalho" colspan="4">ESCOLARIDADE</td>
+      </tr>
+      <tr>
+        <td class="border" colspan="3"></td>
+        <td colspan="3"></td>
+        <td class="border" colspan="4"></td>
+      </tr>
+      <tr>
+        <td class="border cabecalho" colspan="4">RG</td>
+        <td class="cabecalho" colspan="3">DATA DE EMISSÃO</td>
+        <td class="cabecalho" colspan="2">ÓRGÃO EXP.</td>
+        <td class="border cabecalho" colspan="1">UF</td>
+      </tr>
+      <tr>
+        <td class="border" colspan="4"></td>
+        <td colspan="3"></td>
         <td colspan="2"></td>
+        <td class="border" colspan="1"></td>
       </tr>
       <tr>
-        <td>RG</td>
-        <td></td>
-        <td>DATA DE EMISSÃO</td>
-        <td></td>
-        <td>ÓRGÃO EXP.</td>
-        <td></td>
-        <td>UF</td>
+        <td class="border cabecalho" colspan="4">CTPS</td>
+        <td class="cabecalho" colspan="2">SÉRIE</td>
+        <td class="cabecalho" colspan="3">DATA DE EMISSÃO</td>
+        <td class="border cabecalho" colspan="1">UF</td>
       </tr>
       <tr>
-        <td>CTPS</td>
-        <td></td>
-        <td>SÉRIE</td>
-        <td></td>
-        <td>DATA DE EMISSÃO</td>
-        <td></td>
-        <td>UF</td>
+        <td class="border" colspan="4"></td>
+        <td colspan="2"></td>
+        <td colspan="3"></td>
+        <td class="border" colspan="1"></td>
       </tr>
       <tr>
-        <td>TÍTULO DE ELEITOR</td>
-        <td></td>
-        <td>ZONA</td>
-        <td></td>
-        <td>SEÇÃO</td>
-        <td></td>
-        <td>DATA DE EMISSÃO / UF</td>
+        <td class="border cabecalho" colspan="3">TÍTULO DE ELEITOR</td>
+        <td class="cabecalho" colspan="2">ZONA</td>
+        <td class="cabecalho" colspan="2">SEÇÃO</td>
+        <td class="cabecalho" colspan="2">DATA DE EMISSÃO</td>
+        <td class="border cabecalho" colspan="1">UF</td>
       </tr>
       <tr>
-        <td>BANCO</td>
-        <td></td>
-        <td>AGÊNCIA</td>
-        <td></td>
-        <td>CONTA C/ DV</td>
-        <td></td>
-        <td>SINDICATO / PENSÃO ALIMENTÍCIA</td>
+        <td class="border" colspan="3"></td>
+        <td colspan="2"></td>
+        <td colspan="2"></td>
+        <td colspan="2"></td>
+        <td class="border" colspan="1"></td>
+      </tr>
+      <tr>
+        <td class="border cabecalho" colspan="2">BANCO/AGÊNCIA</td>
+        <td class="cabecalho" colspan="2">CONTA COM DV</td>
+        <td class="cabecalho" colspan="3">SINDICATO </td>
+        <td class="border cabecalho" colspan="3">PENSÃO ALIMENTÍCIA/JUDICIAL</td>
+      </tr>
+      <tr>
+        <td class="border" colspan="2"></td>
+        <td colspan="2"></td>
+        <td colspan="3"></td>
+        <td class="border" colspan="3"></td>
       </tr>
     </table>
 
     <h2>3 - DADOS FUNCIONAIS</h2>
     <table>
+      <colgroup>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+      </colgroup>
       <tr>
-        <td>CARGO / FUNÇÃO</td>
-        <td colspan="3"></td>
-        <td>DATA DA PORTARIA</td>
-        <td></td>
-        <td>DATA DA POSSE</td>
+        <td class="border cabecalho" colspan="6">CARGO / FUNÇÃO</td>
+        <td class="cabecalho" colspan="2">DATA DA PORTARIA</td>
+        <td class="border cabecalho" colspan="2">DATA DA POSSE</td>
       </tr>
       <tr>
-        <td>LOTAÇÃO</td>
-        <td colspan="3"></td>
-        <td>ÚLTIMO LOCAL DE TRABALHO</td>
+        <td class="border" colspan="6"></td>
         <td colspan="2"></td>
+        <td class="border" colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="border cabecalho" style="border-right: #000 solid 1px;" colspan="5">LOTAÇÃO</td>
+        <td class="border cabecalho" colspan="5">ÚLTIMO LOCAL DE TRABALHO</td>
+      </tr>
+      <tr>
+        <td class="border" style="border-right: #000 solid 1px;" colspan="5"></td>
+        <td class="border" colspan="5"></td>
       </tr>
     </table>
 
     <h2>4 - DEPENDENTES</h2>
     <table>
+      <colgroup>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+        <col style="width: 10%"/>
+      </colgroup>
       <tr>
-        <th>NOME</th>
-        <th>TIPO</th>
-        <th>DATA NASCIMENTO</th>
-        <th>CPF</th>
+        <th class="border cabecalho" colspan="5">NOME</th>
+        <th  class="cabecalho" colspan="1">TIPO</th>
+        <th class="cabecalho" colspan="2">DATA NASCIMENTO</th>
+        <th class="border cabecalho" colspan="2">CPF</th>
       </tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td class="border" colspan="5"></td>
+        <td colspan="1"></td>
+        <td colspan="2"></td>
+        <td class="border" colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="border" colspan="5"></td>
+        <td colspan="1"></td>
+        <td colspan="2"></td>
+        <td class="border" colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="border" colspan="5"></td>
+        <td colspan="1"></td>
+        <td colspan="2"></td>
+        <td class="border" colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="border" colspan="5"></td>
+        <td colspan="1"></td>
+        <td colspan="2"></td>
+        <td class="border" colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="border" colspan="5"></td>
+        <td colspan="1"></td>
+        <td colspan="2"></td>
+        <td class="border" colspan="2"></td>
+      </tr>
+      <tr>
+        <td class="border" colspan="5"></td>
+        <td colspan="1"></td>
+        <td colspan="2"></td>
+        <td class="border" colspan="2"></td>
+      </tr>
     </table>
 
     <h2>5 - OBSERVAÇÕES</h2>
@@ -211,18 +395,16 @@
     </table>
 
     <div class="assinatura">
+      <div>
+        <div class="linha-assinatura"></div>
+        <br>ASSINATURA DO(A) SERVIDOR(A)
+      </div>
+      <div>
+        <div class="linha-assinatura"></div>
+        <br>ASS. E CARIMBO DO RESPONSÁVEL PELA COLETA DAS INFORMAÇÕES
+      </div>
       <p>Junco do Maranhão - MA, em: ____ / ____ / ______</p>
-      <div>_________________________________________<br>ASSINATURA DO(A) SERVIDOR(A)</div>
-      <div style="margin-top: 40px;">_________________________________________<br>ASS. E CARIMBO DO RESPONSÁVEL PELA COLETA DAS INFORMAÇÕES</div>
     </div>
-
-    <div class="footer">
-      PREFEITURA MUNICIPAL DE JUNCO DO MARANHÃO - MA<br>
-      CNPJ: 01.612.334/0001-89<br>
-      RUA MARCELO MARTINS DE MOURA, 111 – CENTRO – JUNCO DO MA<br>
-      DEPARTAMENTO DE RECURSOS HUMANOS
-    </div>
-
   </div>
 </body>
 </html>
