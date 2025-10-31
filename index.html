@@ -93,7 +93,7 @@
       font-size:7px;
       font-weight: 600;
       padding: 2px 10px;
-      background: #cdcdcd;
+      /* background: #cdcdcd; */
       height: 8px;
       /* border: 1px solid #000; */
     }
@@ -334,6 +334,13 @@
     <label>Tipo</label><input type="text" id="dependente_tipo6">
     <label>Data de Nascimento</label><input type="date" id="dependente_nascimento6">
     <label>CPF</label><input type="text" id="dependente_cpf6">
+
+     <h2>5 - Observações e Assinaturas</h2>
+
+    <label>Observações</label>
+    <textarea id="observacoes" style="width: 100%;" rows="10" placeholder="Digite observações relevantes..."></textarea>
+    <!-- <label>Data da Assinatura</label>
+    <input type="date" id="data_assinatura"> -->
 
     <button onclick="gerarFicha()">Gerar PDF</button>
   </div>
@@ -602,7 +609,9 @@
 
     <h2>5 - OBSERVAÇÕES</h2>
     <table style="height: 120px;">
-      <tr><td></td></tr>
+      <tr>
+        <td id="out_observacoes"></td>
+      </tr>
     </table>
 
     <div class="assinatura">
@@ -695,6 +704,8 @@
         dependente_tipo6: document.getElementById('dependente_tipo6').value,
         dependente_nascimento6: document.getElementById('dependente_nascimento6').value,
         dependente_cpf6: document.getElementById('dependente_cpf6').value,
+        observacoes: document.getElementById('observacoes').value,
+        // data_assinatura: document.getElementById('data_assinatura').value,
       };
 
       // 2️⃣ Preenche o documento
@@ -751,6 +762,9 @@
         document.getElementById(`out_dependente_cpf${i}`).textContent = dados[`dependente_cpf${i}`];
       }
 
+      document.getElementById("out_observacoes").textContent = dados.observacoes;
+      // document.getElementById("out_data_assinatura").textContent = dados.data_assinatura || ;
+
       // 3️⃣ Gera PDF
       const element = document.getElementById('ficha');
       const options = {
@@ -764,12 +778,12 @@
         }
       };
 
-      // html2pdf().set(options).from(element)//.save();
-      //   .outputPdf('blob')
-      //   .then((blob) => {
-      //     const url = URL.createObjectURL(blob);
-      //     window.open(url, '_blank');
-      //   });
+      html2pdf().set(options).from(element)//.save();
+        .outputPdf('blob')
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, '_blank');
+        });
     }
     document.getElementById('foto').addEventListener('change', function (e) {
       const file = e.target.files[0];
@@ -782,108 +796,114 @@
     });
     document.getElementById("dataAtual").innerText = new Date().toLocaleDateString("pt-BR");
     
-    function preencherFormulario(dados) {
-      for (const chave in dados) {
-        const campo = document.getElementById(chave);
-        if (campo) {
-          const valor = dados[chave];
-          const tag = campo.tagName.toLowerCase();
-          const tipo = campo.type?.toLowerCase();
+    // function preencherFormulario(dados) {
+    //   for (const chave in dados) {
+    //     const campo = document.getElementById(chave);
+    //     if (campo) {
+    //       const valor = dados[chave];
+    //       const tag = campo.tagName.toLowerCase();
+    //       const tipo = campo.type?.toLowerCase();
 
-          if (tag === 'input' && (tipo === 'checkbox' || tipo === 'radio')) {
-            campo.checked = Boolean(valor);
-          } else if (tag === 'select') {
-            campo.value = valor;
-          } else if (tag === 'textarea' || tag === 'input') {
-            campo.value = valor;
-          }
-        }
-      }
-    }
-    document.addEventListener("DOMContentLoaded", () => {
-      const dadosServidor = {
-        matricula: "12345",
-        nome: "João da Silva",
-        nascimento: "1988-04-22",
-        sexo: "Masculino",
-        estado_civil: "Casado(a)",
-        naturalidade: "Junco do Maranhão",
-        uf: "MA",
-        mae: "Maria de Souza",
-        pai: "José da Silva",
-        endereco: "Rua Marcelo Martins de Moura",
-        numero: "111",
-        complemento: "Casa",
-        bairro: "Centro",
-        cidade: "Junco do Maranhão",
-        cep: "65295-000",
-        telefone_fixo: "9833552211",
-        celular: "98988887777",
-        email: "joaosilva@junco.ma.gov.br",
+    //       if (tag === 'input' && (tipo === 'checkbox' || tipo === 'radio')) {
+    //         campo.checked = Boolean(valor);
+    //       } else if (tag === 'select') {
+    //         campo.value = valor;
+    //       } else if (tag === 'textarea' || tag === 'input') {
+    //         campo.value = valor;
+    //       }
+    //     }
+    //   }
+    // }
+    // document.addEventListener("DOMContentLoaded", () => {
+//       const dadosServidor = {
+//         matricula: "12345",
+//         nome: "João da Silva",
+//         nascimento: "1988-04-22",
+//         sexo: "Masculino",
+//         estado_civil: "Casado(a)",
+//         naturalidade: "Junco do Maranhão",
+//         uf: "MA",
+//         mae: "Maria de Souza",
+//         pai: "José da Silva",
+//         endereco: "Rua Marcelo Martins de Moura",
+//         numero: "111",
+//         complemento: "Casa",
+//         bairro: "Centro",
+//         cidade: "Junco do Maranhão",
+//         cep: "65295-000",
+//         telefone_fixo: "9833552211",
+//         celular: "98988887777",
+//         email: "joaosilva@junco.ma.gov.br",
                 
-        cpf: "123.456.789-00",
-        pis_pasep: "12345678901",
-        escolaridade: "Ensino Superior Completo",
-        rg: "1234567",
-        rg_data_emissao: "2010-05-12",
-        rg_orgao_exp: "SSP",
-        rg_uf: "MA",
-        ctps: "654321",
-        ctps_serie: "0021",
-        ctps_data_emissao: "2012-08-01",
-        ctps_uf: "MA",
-        titulo_eleitor: "1234 5678 9012",
-        titulo_zona: "051",
-        titulo_secao: "123",
-        titulo_data_emissao: "2008-10-20",
-        titulo_uf: "MA",
-        banco_agencia: "BB / 1234-5",
-        conta_dv: "98765-0",
-        sindicato: "SINDSERV",
-        pensao: "Não",
+//         cpf: "123.456.789-00",
+//         pis_pasep: "12345678901",
+//         escolaridade: "Ensino Superior Completo",
+//         rg: "1234567",
+//         rg_data_emissao: "2010-05-12",
+//         rg_orgao_exp: "SSP",
+//         rg_uf: "MA",
+//         ctps: "654321",
+//         ctps_serie: "0021",
+//         ctps_data_emissao: "2012-08-01",
+//         ctps_uf: "MA",
+//         titulo_eleitor: "1234 5678 9012",
+//         titulo_zona: "051",
+//         titulo_secao: "123",
+//         titulo_data_emissao: "2008-10-20",
+//         titulo_uf: "MA",
+//         banco_agencia: "BB / 1234-5",
+//         conta_dv: "98765-0",
+//         sindicato: "SINDSERV",
+//         pensao: "Não",
 
-        cargo: "Professor de Matemática",
-        data_portaria: "2015-03-10",
-        data_posse: "2015-03-20",
-        lotacao: "Escola Municipal José do Povo",
-        ultimo_local_trabalho: "Escola Estadual João de Barro",
+//         cargo: "Professor de Matemática",
+//         data_portaria: "2015-03-10",
+//         data_posse: "2015-03-20",
+//         lotacao: "Escola Municipal José do Povo",
+//         ultimo_local_trabalho: "Escola Estadual João de Barro",
 
 
-        dependente_nome1: "Ana Clara Silva",
-        dependente_tipo1: "Filha",
-        dependente_nascimento1: "2010-05-15",
-        dependente_cpf1: "123.456.789-10",
+//         dependente_nome1: "Ana Clara Silva",
+//         dependente_tipo1: "Filha",
+//         dependente_nascimento1: "2010-05-15",
+//         dependente_cpf1: "123.456.789-10",
 
-        dependente_nome2: "Pedro Henrique Silva",
-        dependente_tipo2: "Filho",
-        dependente_nascimento2: "2013-11-22",
-        dependente_cpf2: "234.567.890-21",
+//         dependente_nome2: "Pedro Henrique Silva",
+//         dependente_tipo2: "Filho",
+//         dependente_nascimento2: "2013-11-22",
+//         dependente_cpf2: "234.567.890-21",
 
-        dependente_nome3: "Maria Eduarda Silva",
-        dependente_tipo3: "Filha",
-        dependente_nascimento3: "2016-07-08",
-        dependente_cpf3: "345.678.901-32",
+//         dependente_nome3: "Maria Eduarda Silva",
+//         dependente_tipo3: "Filha",
+//         dependente_nascimento3: "2016-07-08",
+//         dependente_cpf3: "345.678.901-32",
 
-        dependente_nome4: "Lucas Ferreira Silva",
-        dependente_tipo4: "Filho",
-        dependente_nascimento4: "2018-02-03",
-        dependente_cpf4: "456.789.012-43",
+//         dependente_nome4: "Lucas Ferreira Silva",
+//         dependente_tipo4: "Filho",
+//         dependente_nascimento4: "2018-02-03",
+//         dependente_cpf4: "456.789.012-43",
 
-        dependente_nome5: "Bruna Ribeiro Silva",
-        dependente_tipo5: "Filha",
-        dependente_nascimento5: "2020-09-27",
-        dependente_cpf5: "567.890.123-54",
+//         dependente_nome5: "Bruna Ribeiro Silva",
+//         dependente_tipo5: "Filha",
+//         dependente_nascimento5: "2020-09-27",
+//         dependente_cpf5: "567.890.123-54",
 
-        dependente_nome6: "Carlos Eduardo Silva",
-        dependente_tipo6: "Filho",
-        dependente_nascimento6: "2022-06-11",
-        dependente_cpf6: "678.901.234-65"
+//         dependente_nome6: "Carlos Eduardo Silva",
+//         dependente_tipo6: "Filho",
+//         dependente_nascimento6: "2022-06-11",
+//         dependente_cpf6: "678.901.234-65",
+//         observacoes: `O servidor apresentou todos os documentos solicitados para o recadastramento, incluindo cópias autenticadas de RG, CPF, comprovante de residência e título de eleitor. Constatou-se que o endereço informado está atualizado e condiz com os registros anteriores.
 
-      };
+// Durante o preenchimento, o servidor informou possuir dois vínculos anteriores na rede municipal, os quais já foram devidamente encerrados.
 
-      // Preenche o formulário automaticamente
-      preencherFormulario(dadosServidor);
-    });
-  </script>
+// Não há pendências financeiras, administrativas ou disciplinares registradas até a presente data.`,
+
+//         // data_assinatura: "2025-10-21",
+//       };
+
+//       // Preenche o formulário automaticamente
+//       preencherFormulario(dadosServidor);
+//     });
+   </script>
 </body>
 </html>
