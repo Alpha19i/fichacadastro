@@ -220,65 +220,82 @@
 
     <h2>2 - Documentos</h2>
 
-  <label>CPF</label>
-  <input type="text" id="cpf">
+    <label>CPF</label>
+    <input type="text" id="cpf">
 
-  <label>PIS/PASEP</label>
-  <input type="text" id="pis_pasep">
+    <label>PIS/PASEP</label>
+    <input type="text" id="pis_pasep">
 
-  <label>Escolaridade</label>
-  <input type="text" id="escolaridade">
+    <label>Escolaridade</label>
+    <input type="text" id="escolaridade">
 
-  <label>RG</label>
-  <input type="text" id="rg">
+    <label>RG</label>
+    <input type="text" id="rg">
 
-  <label>Data de Emissão (RG)</label>
-  <input type="date" id="rg_data_emissao">
+    <label>Data de Emissão (RG)</label>
+    <input type="date" id="rg_data_emissao">
 
-  <label>Órgão Expedidor (RG)</label>
-  <input type="text" id="rg_orgao_exp">
+    <label>Órgão Expedidor (RG)</label>
+    <input type="text" id="rg_orgao_exp">
 
-  <label>UF (RG)</label>
-  <input type="text" id="rg_uf" maxlength="2" style="text-transform:uppercase;">
+    <label>UF (RG)</label>
+    <input type="text" id="rg_uf" maxlength="2" style="text-transform:uppercase;">
 
-  <label>CTPS</label>
-  <input type="text" id="ctps">
+    <label>CTPS</label>
+    <input type="text" id="ctps">
 
-  <label>Série (CTPS)</label>
-  <input type="text" id="ctps_serie">
+    <label>Série (CTPS)</label>
+    <input type="text" id="ctps_serie">
 
-  <label>Data de Emissão (CTPS)</label>
-  <input type="date" id="ctps_data_emissao">
+    <label>Data de Emissão (CTPS)</label>
+    <input type="date" id="ctps_data_emissao">
 
-  <label>UF (CTPS)</label>
-  <input type="text" id="ctps_uf" maxlength="2" style="text-transform:uppercase;">
+    <label>UF (CTPS)</label>
+    <input type="text" id="ctps_uf" maxlength="2" style="text-transform:uppercase;">
 
-  <label>Título de Eleitor</label>
-  <input type="text" id="titulo_eleitor">
+    <label>Título de Eleitor</label>
+    <input type="text" id="titulo_eleitor">
 
-  <label>Zona</label>
-  <input type="text" id="titulo_zona">
+    <label>Zona</label>
+    <input type="text" id="titulo_zona">
 
-  <label>Seção</label>
-  <input type="text" id="titulo_secao">
+    <label>Seção</label>
+    <input type="text" id="titulo_secao">
 
-  <label>Data de Emissão (Título)</label>
-  <input type="date" id="titulo_data_emissao">
+    <label>Data de Emissão (Título)</label>
+    <input type="date" id="titulo_data_emissao">
 
-  <label>UF (Título)</label>
-  <input type="text" id="titulo_uf" maxlength="2" style="text-transform:uppercase;">
+    <label>UF (Título)</label>
+    <input type="text" id="titulo_uf" maxlength="2" style="text-transform:uppercase;">
 
-  <label>Banco / Agência</label>
-  <input type="text" id="banco_agencia">
+    <label>Banco / Agência</label>
+    <input type="text" id="banco_agencia">
 
-  <label>Conta com DV</label>
-  <input type="text" id="conta_dv">
+    <label>Conta com DV</label>
+    <input type="text" id="conta_dv">
 
-  <label>Sindicato</label>
-  <input type="text" id="sindicato">
+    <label>Sindicato</label>
+    <input type="text" id="sindicato">
 
-  <label>Pensão Alimentícia / Judicial</label>
-  <input type="text" id="pensao">
+    <label>Pensão Alimentícia / Judicial</label>
+    <input type="text" id="pensao">
+
+    <h2>3 - Dados Funcionais</h2>
+
+    <label>Cargo / Função</label>
+    <input type="text" id="cargo">
+
+    <label>Data da Portaria</label>
+    <input type="date" id="data_portaria">
+
+    <label>Data da Posse</label>
+    <input type="date" id="data_posse">
+
+    <label>Lotação</label>
+    <input type="text" id="lotacao">
+
+    <label>Último Local de Trabalho</label>
+    <input type="text" id="ultimo_local_trabalho">
 
     <button onclick="gerarFicha()">Gerar PDF</button>
   </div>
@@ -474,16 +491,16 @@
       </tr>
       <tr>
         <td id="out_cargo" class="border" colspan="6"></td>
-        <td colspan="2"></td>
-        <td class="border" colspan="2"></td>
+        <td id="out_data_portaria" colspan="2"></td>
+        <td id="out_data_posse" class="border" colspan="2"></td>
       </tr>
       <tr>
         <td class="border cabecalho" style="border-right: #000 solid 1px;" colspan="5">LOTAÇÃO</td>
         <td class="border cabecalho" colspan="5">ÚLTIMO LOCAL DE TRABALHO</td>
       </tr>
       <tr>
-        <td class="border" style="border-right: #000 solid 1px;" colspan="5"></td>
-        <td class="border" colspan="5"></td>
+        <td id="out_lotacao" class="border" style="border-right: #000 solid 1px;" colspan="5"></td>
+        <td id="out_ultimo_local_trabalho" class="border" colspan="5"></td>
       </tr>
     </table>
 
@@ -604,7 +621,12 @@
         banco_agencia: document.getElementById('banco_agencia').value,
         conta_dv: document.getElementById('conta_dv').value,
         sindicato: document.getElementById('sindicato').value,
-        pensao: document.getElementById('pensao').value
+        pensao: document.getElementById('pensao').value,
+        cargo: document.getElementById('cargo').value,
+        data_portaria: document.getElementById('data_portaria').value,
+        data_posse: document.getElementById('data_posse').value,
+        lotacao: document.getElementById('lotacao').value,
+        ultimo_local_trabalho: document.getElementById('ultimo_local_trabalho').value,
       };
 
       // 2️⃣ Preenche o documento
@@ -647,6 +669,13 @@
       document.getElementById("out_conta_dv").textContent = dados.conta_dv;
       document.getElementById("out_sindicato").textContent = dados.sindicato;
       document.getElementById("out_pensao").textContent = dados.pensao;
+
+      document.getElementById("out_cargo").textContent = dados.cargo;
+      document.getElementById("out_data_portaria").textContent = dados.data_portaria;
+      document.getElementById("out_data_posse").textContent = dados.data_posse;
+      document.getElementById("out_lotacao").textContent = dados.lotacao;
+      document.getElementById("out_ultimo_local_trabalho").textContent = dados.ultimo_local_trabalho;
+
 
       // 3️⃣ Gera PDF
       const element = document.getElementById('ficha');
@@ -737,7 +766,13 @@
         banco_agencia: "BB / 1234-5",
         conta_dv: "98765-0",
         sindicato: "SINDSERV",
-        pensao: "Não"
+        pensao: "Não",
+
+        cargo: "Professor de Matemática",
+        data_portaria: "2015-03-10",
+        data_posse: "2015-03-20",
+        lotacao: "Escola Municipal José do Povo",
+        ultimo_local_trabalho: "Escola Estadual João de Barro"
       };
 
       // Preenche o formulário automaticamente
