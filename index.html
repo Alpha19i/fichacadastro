@@ -297,6 +297,44 @@
     <label>Último Local de Trabalho</label>
     <input type="text" id="ultimo_local_trabalho">
 
+    <h2>4 - Dependentes</h2>
+
+    <h4>Dependente 1</h4>
+    <label>Nome</label><input type="text" id="dependente_nome1">
+    <label>Tipo</label><input type="text" id="dependente_tipo1">
+    <label>Data de Nascimento</label><input type="date" id="dependente_nascimento1">
+    <label>CPF</label><input type="text" id="dependente_cpf1">
+
+    <h4>Dependente 2</h4>
+    <label>Nome</label><input type="text" id="dependente_nome2">
+    <label>Tipo</label><input type="text" id="dependente_tipo2">
+    <label>Data de Nascimento</label><input type="date" id="dependente_nascimento2">
+    <label>CPF</label><input type="text" id="dependente_cpf2">
+
+    <h4>Dependente 3</h4>
+    <label>Nome</label><input type="text" id="dependente_nome3">
+    <label>Tipo</label><input type="text" id="dependente_tipo3">
+    <label>Data de Nascimento</label><input type="date" id="dependente_nascimento3">
+    <label>CPF</label><input type="text" id="dependente_cpf3">
+
+    <h4>Dependente 4</h4>
+    <label>Nome</label><input type="text" id="dependente_nome4">
+    <label>Tipo</label><input type="text" id="dependente_tipo4">
+    <label>Data de Nascimento</label><input type="date" id="dependente_nascimento4">
+    <label>CPF</label><input type="text" id="dependente_cpf4">
+
+    <h4>Dependente 5</h4>
+    <label>Nome</label><input type="text" id="dependente_nome5">
+    <label>Tipo</label><input type="text" id="dependente_tipo5">
+    <label>Data de Nascimento</label><input type="date" id="dependente_nascimento5">
+    <label>CPF</label><input type="text" id="dependente_cpf5">
+
+    <h4>Dependente 6</h4>
+    <label>Nome</label><input type="text" id="dependente_nome6">
+    <label>Tipo</label><input type="text" id="dependente_tipo6">
+    <label>Data de Nascimento</label><input type="date" id="dependente_nascimento6">
+    <label>CPF</label><input type="text" id="dependente_cpf6">
+
     <button onclick="gerarFicha()">Gerar PDF</button>
   </div>
 
@@ -520,45 +558,45 @@
       </colgroup>
       <tr>
         <th class="border cabecalho" colspan="5">NOME</th>
-        <th  class="cabecalho" colspan="1">TIPO</th>
+        <th class="cabecalho" colspan="1">TIPO</th>
         <th class="cabecalho" colspan="2">DATA NASCIMENTO</th>
         <th class="border cabecalho" colspan="2">CPF</th>
       </tr>
       <tr>
-        <td class="border" colspan="5"></td>
-        <td colspan="1"></td>
-        <td colspan="2"></td>
-        <td class="border" colspan="2"></td>
+        <td id="out_dependente_nome1" class="border" colspan="5"></td>
+        <td id="out_dependente_tipo1" colspan="1"></td>
+        <td id="out_dependente_nascimento1" colspan="2"></td>
+        <td id="out_dependente_cpf1" class="border" colspan="2"></td>
       </tr>
       <tr>
-        <td class="border" colspan="5"></td>
-        <td colspan="1"></td>
-        <td colspan="2"></td>
-        <td class="border" colspan="2"></td>
+        <td id="out_dependente_nome2" class="border" colspan="5"></td>
+        <td id="out_dependente_tipo2" colspan="1"></td>
+        <td id="out_dependente_nascimento2" colspan="2"></td>
+        <td id="out_dependente_cpf2" class="border" colspan="2"></td>
       </tr>
       <tr>
-        <td class="border" colspan="5"></td>
-        <td colspan="1"></td>
-        <td colspan="2"></td>
-        <td class="border" colspan="2"></td>
+        <td id="out_dependente_nome3" class="border" colspan="5"></td>
+        <td id="out_dependente_tipo3" colspan="1"></td>
+        <td id="out_dependente_nascimento3" colspan="2"></td>
+        <td id="out_dependente_cpf3" class="border" colspan="2"></td>
       </tr>
       <tr>
-        <td class="border" colspan="5"></td>
-        <td colspan="1"></td>
-        <td colspan="2"></td>
-        <td class="border" colspan="2"></td>
+        <td id="out_dependente_nome4" class="border" colspan="5"></td>
+        <td id="out_dependente_tipo4" colspan="1"></td>
+        <td id="out_dependente_nascimento4" colspan="2"></td>
+        <td id="out_dependente_cpf4" class="border" colspan="2"></td>
       </tr>
       <tr>
-        <td class="border" colspan="5"></td>
-        <td colspan="1"></td>
-        <td colspan="2"></td>
-        <td class="border" colspan="2"></td>
+        <td id="out_dependente_nome5" class="border" colspan="5"></td>
+        <td id="out_dependente_tipo5" colspan="1"></td>
+        <td id="out_dependente_nascimento5" colspan="2"></td>
+        <td id="out_dependente_cpf5" class="border" colspan="2"></td>
       </tr>
       <tr>
-        <td class="border" colspan="5"></td>
-        <td colspan="1"></td>
-        <td colspan="2"></td>
-        <td class="border" colspan="2"></td>
+        <td id="out_dependente_nome6" class="border" colspan="5"></td>
+        <td id="out_dependente_tipo6" colspan="1"></td>
+        <td id="out_dependente_nascimento6" colspan="2"></td>
+        <td id="out_dependente_cpf6" class="border" colspan="2"></td>
       </tr>
     </table>
 
@@ -627,6 +665,36 @@
         data_posse: document.getElementById('data_posse').value,
         lotacao: document.getElementById('lotacao').value,
         ultimo_local_trabalho: document.getElementById('ultimo_local_trabalho').value,
+
+        dependente_nome1: document.getElementById('dependente_nome1').value,
+        dependente_tipo1: document.getElementById('dependente_tipo1').value,
+        dependente_nascimento1: document.getElementById('dependente_nascimento1').value,
+        dependente_cpf1: document.getElementById('dependente_cpf1').value,
+
+        dependente_nome2: document.getElementById('dependente_nome2').value,
+        dependente_tipo2: document.getElementById('dependente_tipo2').value,
+        dependente_nascimento2: document.getElementById('dependente_nascimento2').value,
+        dependente_cpf2: document.getElementById('dependente_cpf2').value,
+
+        dependente_nome3: document.getElementById('dependente_nome3').value,
+        dependente_tipo3: document.getElementById('dependente_tipo3').value,
+        dependente_nascimento3: document.getElementById('dependente_nascimento3').value,
+        dependente_cpf3: document.getElementById('dependente_cpf3').value,
+
+        dependente_nome4: document.getElementById('dependente_nome4').value,
+        dependente_tipo4: document.getElementById('dependente_tipo4').value,
+        dependente_nascimento4: document.getElementById('dependente_nascimento4').value,
+        dependente_cpf4: document.getElementById('dependente_cpf4').value,
+
+        dependente_nome5: document.getElementById('dependente_nome5').value,
+        dependente_tipo5: document.getElementById('dependente_tipo5').value,
+        dependente_nascimento5: document.getElementById('dependente_nascimento5').value,
+        dependente_cpf5: document.getElementById('dependente_cpf5').value,
+
+        dependente_nome6: document.getElementById('dependente_nome6').value,
+        dependente_tipo6: document.getElementById('dependente_tipo6').value,
+        dependente_nascimento6: document.getElementById('dependente_nascimento6').value,
+        dependente_cpf6: document.getElementById('dependente_cpf6').value,
       };
 
       // 2️⃣ Preenche o documento
@@ -676,6 +744,12 @@
       document.getElementById("out_lotacao").textContent = dados.lotacao;
       document.getElementById("out_ultimo_local_trabalho").textContent = dados.ultimo_local_trabalho;
 
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById(`out_dependente_nome${i}`).textContent = dados[`dependente_nome${i}`];
+        document.getElementById(`out_dependente_tipo${i}`).textContent = dados[`dependente_tipo${i}`];
+        document.getElementById(`out_dependente_nascimento${i}`).textContent = dados[`dependente_nascimento${i}`];
+        document.getElementById(`out_dependente_cpf${i}`).textContent = dados[`dependente_cpf${i}`];
+      }
 
       // 3️⃣ Gera PDF
       const element = document.getElementById('ficha');
@@ -772,7 +846,39 @@
         data_portaria: "2015-03-10",
         data_posse: "2015-03-20",
         lotacao: "Escola Municipal José do Povo",
-        ultimo_local_trabalho: "Escola Estadual João de Barro"
+        ultimo_local_trabalho: "Escola Estadual João de Barro",
+
+
+        dependente_nome1: "Ana Clara Silva",
+        dependente_tipo1: "Filha",
+        dependente_nascimento1: "2010-05-15",
+        dependente_cpf1: "123.456.789-10",
+
+        dependente_nome2: "Pedro Henrique Silva",
+        dependente_tipo2: "Filho",
+        dependente_nascimento2: "2013-11-22",
+        dependente_cpf2: "234.567.890-21",
+
+        dependente_nome3: "Maria Eduarda Silva",
+        dependente_tipo3: "Filha",
+        dependente_nascimento3: "2016-07-08",
+        dependente_cpf3: "345.678.901-32",
+
+        dependente_nome4: "Lucas Ferreira Silva",
+        dependente_tipo4: "Filho",
+        dependente_nascimento4: "2018-02-03",
+        dependente_cpf4: "456.789.012-43",
+
+        dependente_nome5: "Bruna Ribeiro Silva",
+        dependente_tipo5: "Filha",
+        dependente_nascimento5: "2020-09-27",
+        dependente_cpf5: "567.890.123-54",
+
+        dependente_nome6: "Carlos Eduardo Silva",
+        dependente_tipo6: "Filho",
+        dependente_nascimento6: "2022-06-11",
+        dependente_cpf6: "678.901.234-65"
+
       };
 
       // Preenche o formulário automaticamente
