@@ -1,0 +1,82 @@
+const secoes = [
+  "sections/pessoais.html",
+  "sections/documentos.html",
+  "sections/funcionais.html",
+  "sections/dependentes.html",
+  "sections/observacoes.html"
+];
+
+let indice = 0;
+const formContent = document.getElementById("form-content");
+const btnAnterior = document.getElementById("btnAnterior");
+const btnProximo = document.getElementById("btnProximo");
+
+// 🧩 Carregar seção dinamicamente
+async function carregarSecao(i) {
+  const res = await fetch(secoes[i]);
+  const html = await res.text();
+  formContent.innerHTML = html;
+  ativarEspelhamento();
+  btnAnterior.disabled = i === 0;
+  btnProximo.textContent = i === secoes.length - 1 ? "Gerar PDF" : "Próximo";
+}
+
+// 🪞 Atualizar ficha em tempo real
+function ativarEspelhamento() {
+  const inputs = formContent.querySelectorAll("input, select, textarea");
+
+  inputs.forEach((input) => {
+    input.addEventListener("input", () => atualizarCampo(input.id));
+  });
+}
+
+function atualizarCampo(id) {
+  const input = document.getElementById(id);
+  const output = document.getElementById(`out_${id}`);
+  if (input && output) output.textContent = input.type === "date" && input.value ? input.value.split('-').reverse().join('/') : input.value;
+}
+
+// ▶ Navegação
+btnProximo.addEventListener("click", () => {
+  if (indice < secoes.length - 1) {
+    indice++;
+    carregarSecao(indice);
+  } else {
+    gerarPDF();
+  }
+});
+
+btnAnterior.addEventListener("click", () => {
+  if (indice > 0) {
+    indice--;
+    carregarSecao(indice);
+  }
+});
+
+// 📸 Foto
+document.addEventListener("change", (e) => {
+  if (e.target.id === "foto") {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      document.getElementById("fotoPerfil").src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Inicializar
+carregarSecao(indice);
+
+// 📄 Gerar PDF
+function gerarPDF() {
+  const opt = {
+    margin: 0.5,
+    filename: "ficha_servidor.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
+  };
+  html2pdf().set(opt).from(document.getElementById("ficha")).save();
+}

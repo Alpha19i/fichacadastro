@@ -1,0 +1,140 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #000;
+  background:#f3f3f3;
+  margin: 0;
+  padding: 0;
+}
+
+.formulario {
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 10px;
+  background: #f3f3f3;
+  border-bottom: 2px solid #000;
+}
+
+.formulario label {
+  display: block;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.formulario input {
+  width: 100%;
+  padding: 6px;
+  margin: 4px 0 0 0;
+  height: 31px;
+  box-sizing: border-box;
+}
+
+.formulario button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container { 
+  size: A4;
+  margin: 20mm;
+  background: #fff;
+  max-width: 21cm;
+  /* border: 1px solid #000; */
+  padding: 20px 20px 0 20px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+h1, h3 {
+  text-align: center;
+  margin: 5px 0;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+h1 {
+  font-size: 16px;
+  padding: 10px 0 0 0;
+}
+
+h2 {
+  font-size: 14px;
+  margin: 4px 0;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: #000 solid 3px;
+  margin: 0;
+}
+
+td, th {
+  text-align: left;
+  border: 1px solid #000;
+  height: 16px;
+  padding: 2px 6px;
+  vertical-align: middle;
+}
+.border{
+  border-left: none;
+  border-right: none;
+}
+
+.cabecalho{
+  font-size:7px;
+  font-weight: 600;
+  padding: 2px 10px;
+  /* background: #cdcdcd; */
+  height: 8px;
+  /* border: 1px solid #000; */
+}
+
+.assinatura { 
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size:10px;
+  text-align: center;
+  gap: 15px;
+}
+
+.linha-assinatura { 
+  width: 350px; 
+  border-top: 1px solid black; 
+  margin: 2px auto; 
+}
+
+.assinatura p {
+  min-width: 100%;
+}
+.assinatura div {
+  font-size:8px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+.titles {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  height: 90px;
+}
+.perfil {
+  border: #000 solid 1px;
+  min-width: 3cm;
+  max-width: 3cm;
+  min-height: 4cm;
+  max-height: 4cm;
+  position: relative; 
+  /* top: 40px; */
+  background: #fff;
+}
+.perfil img { width: 100%; height: 100%; object-fit: cover; }
+.text{
+  /* margin-top: 30px; */
+  width: 100% ;
+  overflow: hidden;
+}
