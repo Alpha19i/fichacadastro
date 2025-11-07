@@ -9,10 +9,11 @@
   <script src="formulario.js" type="text/javascript" defer></script>
   <script src="form.js" type="text/javascript" defer></script>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/sections/formulario.css">
 </head>
 <body>
-  <form onSubmit="gerarFicha(); return false;" class="formulario">
-     <div id="form-content"></div>
+  <form onSubmit="gerarFicha(); return false;" id="formulario">
+    <div id="form-content"></div>
 
     <div class="botoes">
       <button type="button" id="btnAnterior" disabled>Anterior</button>
@@ -300,6 +301,6 @@
       <p>Junco do Maranhão - MA, em: <span id="dataAtual"></span></p>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script defer src="script.js"></script>
 </body>
 </html>

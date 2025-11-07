@@ -8,11 +8,74 @@ function aplicarMascaraCPF(input) {
     .slice(0, 13)
     .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
 }
+function aplicarMascaraCelular(input) {
+  input.value = input.value
+    .replace(/\D/g, '')                 
+    .replace(/^(\d{2})(\d)/, '($1) $2') 
+    .slice(0, 14)                      
+    .replace(/(\d{4,5})(\d{4})$/, '$1-$2')
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('input[id^="cpf"], input[id^="dependente_cpf"]').forEach(el => {
-      el.addEventListener('input', () => aplicarMascaraCPF(el));
-});})
+function aplicarMascaraCEP(input) {
+  input.value = input.value
+    .replace(/\D/g, '')                
+    .replace(/(\d{2})(\d)/, '$1.$2')
+    .slice(0, 8)
+    .replace(/(\d{3})(\d)/, '$1-$2')
+}
+// // document.addEventListener("DOMContentLoaded", () => {
+//   console.log('readyState:', document.readyState, !!document.getElementById('cpf') );
+//     document.querySelectorAll('input[id="cpf"], input[id^="dependente_cpf"]').forEach(el => {
+//       el.addEventListener('input', () => aplicarMascaraCPF(el));
+//     });
+// // })
+
+document.addEventListener('input', e => {
+  const el = e.target;
+  if (el.matches('input[id="cpf"], input[id^="dependente_cpf"]')) {
+    aplicarMascaraCPF(el);
+    const valido = validarCPF(el.value);
+    if (el.value && !valido && el.value.length === 14) {
+      el.setCustomValidity('CPF inválido');
+    } else {
+      el.setCustomValidity('');
+    }
+  }
+  if (el.matches('input[id="cep"]')) {
+    aplicarMascaraCEP(el);
+  }
+  if (el.matches('[id^="telefone"], [id^="celular"]')) {
+    aplicarMascaraCelular(el);
+  }
+});
+
+function validarCPF(cpf) {
+  cpf = cpf.replace(/\D/g, '');
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false; // evita CPFs repetidos tipo 111.111...
+
+  let soma = 0, resto;
+
+  for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+  soma = 0;
+  for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  return resto === parseInt(cpf.substring(10, 11));
+}
+
+
+document.addEventListener('blur', e => {
+  const el = e.target;
+  if (el.matches('input[id="cpf"], input[id^="dependente_cpf"]')) {
+    if (!validarCPF(el.value) && el.value.length === 14) {
+      el.reportValidity();
+    }
+  }
+}, true);
 
 function gerarFicha() {
   const dados = {

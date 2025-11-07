@@ -7,34 +7,19 @@ body {
   padding: 0;
 }
 
-.formulario {
-  max-width: 980px;
-  margin-inline: auto;
-  padding: 10px;
-  background: #f3f3f3;
-  border-bottom: 2px solid #000;
+/* #ficha {
+  transform-origin: top left;
+  transform: scale(calc(100vw / 500
+  ));
+  width: 1240px; 
+  margin: 0 auto;
 }
 
-.formulario label {
-  display: block;
-  margin-top: 8px;
-  font-weight: 600;
-}
-
-.formulario input {
-  width: 100%;
-  padding: 6px;
-  margin: 4px 0 0 0;
-  height: 31px;
-  box-sizing: border-box;
-}
-
-.formulario button {
-  margin-top: 12px;
-  padding: 8px 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
+@media (max-width: 768px) {
+  :root {
+    --escala-ficha: ; 
+  }
+} */
 
 .container { 
   size: A4;

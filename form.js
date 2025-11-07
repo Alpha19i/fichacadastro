@@ -33,11 +33,23 @@ function ativarEspelhamento() {
 function atualizarCampo(id) {
   const input = document.getElementById(id);
   const output = document.getElementById(`out_${id}`);
-  if (input && output) output.textContent = input.type === "date" && input.value ? input.value.split('-').reverse().join('/') : input.value;
+  if (input && output) output.textContent = input.type === "date" && input.value ? input.value.split('-').reverse().join('/') : input.value.toUpperCase();
 }
 
 // ▶ Navegação
 btnProximo.addEventListener("click", () => {
+
+  const campos = formContent.querySelectorAll("input, select, textarea");
+  let valido = true;
+  for (const campo of campos) {
+    if (!campo.checkValidity()) {
+      campo.reportValidity();
+      valido = false;
+      break;
+    }
+  }
+  // if (!valido) return;
+
   if (indice < secoes.length - 1) {
     indice++;
     carregarSecao(indice);
