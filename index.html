@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FICHA DE CADASTRAMENTO DO(A) SERVIDOR(A)</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.0/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.0/html2pdf.bundle.min.js"></script>
   <script src="formulario.js" type="text/javascript" defer></script>
   <script src="form.js" type="text/javascript" defer></script>
   <link rel="stylesheet" href="style.css">
@@ -53,64 +53,64 @@
         <col style="width: 10%"/>
       </colgroup>
       <tr class="cabecalho">
-        <td class="border cabecalho" colspan="1">MATRÍCULA</td>
+        <td class="border-l cabecalho" colspan="1">MATRÍCULA</td>
         <td class="cabecalho" colspan="8">NOME DO(A) SERVIDOR(A)</td>
-        <td class="border cabecalho" colspan="1">NASCIMENTO</td>
+        <td class="border-r cabecalho" colspan="1">NASCIMENTO</td>
       </tr>
       <tr>
-        <td id="out_matricula" class="border" colspan="1"></td>
+        <td id="out_matricula" class="border-l" colspan="1"></td>
         <td id="out_nome" colspan="8"></td>
-        <td id="out_nascimento" class="border" colspan="1"></td>
+        <td id="out_nascimento" class="border-r" colspan="1"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" colspan="1">SEXO</td>
+        <td class="border-l cabecalho" colspan="1">SEXO</td>
         <td class="cabecalho" colspan="3">ESTADO CIVIL</td>
         <td class="cabecalho" colspan="5">NATURALIDADE</td>  
-        <td class="border cabecalho" colspan="1">UF</td>
+        <td class="border-r cabecalho" colspan="1">UF</td>
       </tr>
       <tr>
-        <td id="out_sexo" class="border" colspan="1"></td>
+        <td id="out_sexo" class="border-l" colspan="1"></td>
         <td id="out_estado_civil" colspan="3"></td>
         <td id="out_naturalidade" colspan="5"></td>  
-        <td id="out_uf" class="border" colspan="1"></td>
+        <td id="out_uf" class="border-r" colspan="1"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" style="border-right: #000 solid 1px;" colspan="5">NOME DA MÃE</td>
-        <td class="border cabecalho" colspan="5">NOME DO PAI</td>
+        <td class="border-l cabecalho" colspan="5">NOME DA MÃE</td>
+        <td class="border-r cabecalho" colspan="5">NOME DO PAI</td>
       </tr>
       <tr>
-        <td id="out_mae" class="border" style="border-right: #000 solid 1px;" colspan="5"></td>
-        <td id="out_pai" class="border" colspan="5"></td>
+        <td id="out_mae" class="border-l" colspan="5"></td>
+        <td id="out_pai" class="border-r" colspan="5"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" colspan="5">ENDEREÇO</td>
+        <td class="border-l cabecalho" colspan="5">ENDEREÇO</td>
         <td class="cabecalho" colspan="1">NUM</td>
-        <td class="border cabecalho" colspan="4">COMPLEMENTO</td>
+        <td class="border-r cabecalho" colspan="4">COMPLEMENTO</td>
       </tr>
       <tr>
-        <td id="out_endereco" class="border" colspan="5"></td>
+        <td id="out_endereco" class="border-l" colspan="5"></td>
         <td id="out_numero" colspan="1"></td>
-        <td id="out_complemento" class="border" colspan="10"></td>
+        <td id="out_complemento" class="border-r" colspan="10"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" colspan="4">BAIRRO</td>
+        <td class="border-l cabecalho" colspan="4">BAIRRO</td>
         <td class="cabecalho" colspan="5">CIDADE</td>
-        <td class="border cabecalho" colspan="1">CEP</td>
+        <td class="border-r cabecalho" colspan="1">CEP</td>
       </tr>
       <tr>
-        <td id="out_bairro" class="border" colspan="4"></td>
+        <td id="out_bairro" class="border-l" colspan="4"></td>
         <td id="out_cidade" colspan="5"></td>
-        <td id="out_cep" class="border" colspan="1"></td>
+        <td id="out_cep" class="border-r" colspan="1"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" colspan="2">TELEFONE FIXO</td>
+        <td class="border-l cabecalho" colspan="2">TELEFONE FIXO</td>
         <td class="cabecalho" colspan="3">CELULAR</td>
-        <td class="border cabecalho" colspan="5">EMAIL</td>
+        <td class="border-r cabecalho" colspan="5">EMAIL</td>
       </tr>
       <tr>
-        <td id="out_telefone_fixo" class="border" colspan="2"></td>
+        <td id="out_telefone_fixo" class="border-l" colspan="2"></td>
         <td id="out_celular" colspan="3"></td>
-        <td id="out_email" class="border" colspan="5"></td>
+        <td id="out_email" class="border-r" colspan="5"></td>
       </tr>
     </table>
 
@@ -129,64 +129,64 @@
         <col style="width: 10%"/>
       </colgroup>
       <tr>
-        <td class="border cabecalho" colspan="3">CPF</td>
+        <td class="border-l cabecalho" colspan="3">CPF</td>
         <td class="cabecalho" colspan="3">PIS/PASEP</td>
-        <td class="border cabecalho" colspan="4">ESCOLARIDADE</td>
+        <td class="border-r cabecalho" colspan="4">ESCOLARIDADE</td>
       </tr>
       <tr>
-        <td id="out_cpf" class="border" colspan="3"></td>
+        <td id="out_cpf" class="border-l" colspan="3"></td>
         <td id="out_pis_pasep" colspan="3"></td>
-        <td id="out_escolaridade" class="border" colspan="4"></td>
+        <td id="out_escolaridade" class="border-r" colspan="4"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" colspan="4">RG</td>
+        <td class="border-l cabecalho" colspan="4">RG</td>
         <td class="cabecalho" colspan="3">DATA DE EMISSÃO</td>
         <td class="cabecalho" colspan="2">ÓRGÃO EXP.</td>
-        <td class="border cabecalho" colspan="1">UF</td>
+        <td class="border-r cabecalho" colspan="1">UF</td>
       </tr>
       <tr>
-        <td id="out_rg" class="border" colspan="4"></td>
+        <td id="out_rg" class="border-l" colspan="4"></td>
         <td id="out_rg_data_emissao" colspan="3"></td>
         <td id="out_rg_orgao_exp" colspan="2"></td>
-        <td id="out_rg_uf" class="border" colspan="1"></td>
+        <td id="out_rg_uf" class="border-r" colspan="1"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" colspan="4">CTPS</td>
+        <td class="border-l cabecalho" colspan="4">CTPS</td>
         <td class="cabecalho" colspan="2">SÉRIE</td>
         <td class="cabecalho" colspan="3">DATA DE EMISSÃO</td>
-        <td class="border cabecalho" colspan="1">UF</td>
+        <td class="border-r cabecalho" colspan="1">UF</td>
       </tr>
       <tr>
-        <td id="out_ctps" class="border" colspan="4"></td>
+        <td id="out_ctps" class="border-l" colspan="4"></td>
         <td id="out_ctps_serie" colspan="2"></td>
         <td id="out_ctps_data_emissao" colspan="3"></td>
-        <td id="out_ctps_uf" class="border" colspan="1"></td>
+        <td id="out_ctps_uf" class="border-r" colspan="1"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" colspan="3">TÍTULO DE ELEITOR</td>
+        <td class="border-l cabecalho" colspan="3">TÍTULO DE ELEITOR</td>
         <td class="cabecalho" colspan="2">ZONA</td>
         <td class="cabecalho" colspan="2">SEÇÃO</td>
         <td class="cabecalho" colspan="2">DATA DE EMISSÃO</td>
-        <td class="border cabecalho" colspan="1">UF</td>
+        <td class="border-r cabecalho" colspan="1">UF</td>
       </tr>
       <tr>
-        <td id="out_titulo_eleitor" class="border" colspan="3"></td>
+        <td id="out_titulo_eleitor" class="border-l" colspan="3"></td>
         <td id="out_titulo_zona" colspan="2"></td>
         <td id="out_titulo_secao" colspan="2"></td>
         <td id="out_titulo_data_emissao" colspan="2"></td>
-        <td id="out_titulo_uf" class="border" colspan="1"></td>
+        <td id="out_titulo_uf" class="border-r" colspan="1"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" colspan="2">BANCO/AGÊNCIA</td>
+        <td class="border-l cabecalho" colspan="2">BANCO/AGÊNCIA</td>
         <td class="cabecalho" colspan="2">CONTA COM DV</td>
         <td class="cabecalho" colspan="3">SINDICATO</td>
-        <td class="border cabecalho" colspan="3">PENSÃO ALIMENTÍCIA/JUDICIAL</td>
+        <td class="border-r cabecalho" colspan="3">PENSÃO ALIMENTÍCIA/JUDICIAL</td>
       </tr>
       <tr>
-        <td id="out_banco_agencia" class="border" colspan="2"></td>
+        <td id="out_banco_agencia" class="border-l" colspan="2"></td>
         <td id="out_conta_dv" colspan="2"></td>
         <td id="out_sindicato" colspan="3"></td>
-        <td id="out_pensao" class="border" colspan="3"></td>
+        <td id="out_pensao" class="border-r" colspan="3"></td>
       </tr>
     </table>
 
@@ -205,22 +205,22 @@
         <col style="width: 10%"/>
       </colgroup>
       <tr>
-        <td class="border cabecalho" colspan="6">CARGO / FUNÇÃO</td>
+        <td class="border-l cabecalho" colspan="6">CARGO / FUNÇÃO</td>
         <td class="cabecalho" colspan="2">DATA DA PORTARIA</td>
-        <td class="border cabecalho" colspan="2">DATA DA POSSE</td>
+        <td class="border-r cabecalho" colspan="2">DATA DA POSSE</td>
       </tr>
       <tr>
-        <td id="out_cargo" class="border" colspan="6"></td>
+        <td id="out_cargo" class="border-l" colspan="6"></td>
         <td id="out_data_portaria" colspan="2"></td>
-        <td id="out_data_posse" class="border" colspan="2"></td>
+        <td id="out_data_posse" class="border-r" colspan="2"></td>
       </tr>
       <tr>
-        <td class="border cabecalho" style="border-right: #000 solid 1px;" colspan="5">LOTAÇÃO</td>
-        <td class="border cabecalho" colspan="5">ÚLTIMO LOCAL DE TRABALHO</td>
+        <td class="border-l cabecalho" colspan="5">LOTAÇÃO</td>
+        <td class="border-r cabecalho" colspan="5">ÚLTIMO LOCAL DE TRABALHO</td>
       </tr>
       <tr>
-        <td id="out_lotacao" class="border" style="border-right: #000 solid 1px;" colspan="5"></td>
-        <td id="out_ultimo_local_trabalho" class="border" colspan="5"></td>
+        <td id="out_lotacao" class="border-l" colspan="5"></td>
+        <td id="out_ultimo_local_trabalho" class="border-r" colspan="5"></td>
       </tr>
     </table>
 
@@ -239,46 +239,46 @@
         <col style="width: 10%"/>
       </colgroup>
       <tr>
-        <th class="border cabecalho" colspan="5">NOME</th>
+        <th class="border-l cabecalho" colspan="5">NOME</th>
         <th class="cabecalho" colspan="1">TIPO</th>
         <th class="cabecalho" colspan="2">DATA NASCIMENTO</th>
-        <th class="border cabecalho" colspan="2">CPF</th>
+        <th class="border-r cabecalho" colspan="2">CPF</th>
       </tr>
       <tr>
-        <td id="out_dependente_nome1" class="border" colspan="5"></td>
+        <td id="out_dependente_nome1" class="border-l" colspan="5"></td>
         <td id="out_dependente_tipo1" colspan="1"></td>
         <td id="out_dependente_nascimento1" colspan="2"></td>
-        <td id="out_dependente_cpf1" class="border" colspan="2"></td>
+        <td id="out_dependente_cpf1" class="border-r" colspan="2"></td>
       </tr>
       <tr>
-        <td id="out_dependente_nome2" class="border" colspan="5"></td>
+        <td id="out_dependente_nome2" class="border-l" colspan="5"></td>
         <td id="out_dependente_tipo2" colspan="1"></td>
         <td id="out_dependente_nascimento2" colspan="2"></td>
-        <td id="out_dependente_cpf2" class="border" colspan="2"></td>
+        <td id="out_dependente_cpf2" class="border-r" colspan="2"></td>
       </tr>
       <tr>
-        <td id="out_dependente_nome3" class="border" colspan="5"></td>
+        <td id="out_dependente_nome3" class="border-l" colspan="5"></td>
         <td id="out_dependente_tipo3" colspan="1"></td>
         <td id="out_dependente_nascimento3" colspan="2"></td>
-        <td id="out_dependente_cpf3" class="border" colspan="2"></td>
+        <td id="out_dependente_cpf3" class="border-r" colspan="2"></td>
       </tr>
       <tr>
-        <td id="out_dependente_nome4" class="border" colspan="5"></td>
+        <td id="out_dependente_nome4" class="border-l" colspan="5"></td>
         <td id="out_dependente_tipo4" colspan="1"></td>
         <td id="out_dependente_nascimento4" colspan="2"></td>
-        <td id="out_dependente_cpf4" class="border" colspan="2"></td>
+        <td id="out_dependente_cpf4" class="border-r" colspan="2"></td>
       </tr>
       <tr>
-        <td id="out_dependente_nome5" class="border" colspan="5"></td>
+        <td id="out_dependente_nome5" class="border-l" colspan="5"></td>
         <td id="out_dependente_tipo5" colspan="1"></td>
         <td id="out_dependente_nascimento5" colspan="2"></td>
-        <td id="out_dependente_cpf5" class="border" colspan="2"></td>
+        <td id="out_dependente_cpf5" class="border-r" colspan="2"></td>
       </tr>
       <tr>
-        <td id="out_dependente_nome6" class="border" colspan="5"></td>
+        <td id="out_dependente_nome6" class="border-l" colspan="5"></td>
         <td id="out_dependente_tipo6" colspan="1"></td>
         <td id="out_dependente_nascimento6" colspan="2"></td>
-        <td id="out_dependente_cpf6" class="border" colspan="2"></td>
+        <td id="out_dependente_cpf6" class="border-r" colspan="2"></td>
       </tr>
     </table>
 

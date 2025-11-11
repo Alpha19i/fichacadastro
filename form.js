@@ -48,7 +48,7 @@ btnProximo.addEventListener("click", () => {
       break;
     }
   }
-  // if (!valido) return;
+  if (!valido) return;
 
   if (indice < secoes.length - 1) {
     indice++;
@@ -83,12 +83,13 @@ carregarSecao(indice);
 
 // 📄 Gerar PDF
 function gerarPDF() {
+  const element = document.getElementById('ficha');
   const opt = {
-    margin: 0.5,
+    margin: 0,
     filename: "ficha_servidor.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
+    // image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 5 },
     jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
   };
-  html2pdf().set(opt).from(document.getElementById("ficha")).save();
+  html2pdf().set(opt).from(element).save();
 }

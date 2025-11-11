@@ -1,5 +1,9 @@
 document.getElementById("dataAtual").innerText = new Date().toLocaleDateString("pt-BR");
 
+ function filtroTeclas(event) {
+  return ((event.charCode >= 48 && event.charCode <= 57) || (event.keyCode == 45 || event.charCode == 46))
+}
+
 function aplicarMascaraCPF(input) {
   input.value = input.value
     .replace(/\D/g, '')                       // Remove tudo que não é número
@@ -23,6 +27,14 @@ function aplicarMascaraCEP(input) {
     .slice(0, 8)
     .replace(/(\d{3})(\d)/, '$1-$2')
 }
+function aplicarMascaraPIS(input) {
+  input.value = input.value
+    .replace(/\D/g, '')                       // Remove tudo que não é número
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/^(\d{3})\.(\d{5})(\d)/, "$1.$2.$3")            //Coloca ponto entre o quinto e o sexto dígitos
+    .slice(0, 13)
+    .replace(/(\d{3})\.(\d{5})\.(\d{2})(\d)/, "$1.$2.$3.$4") //Coloca ponto entre o décimo e o décimo primeiro dígitos
+}
 // // document.addEventListener("DOMContentLoaded", () => {
 //   console.log('readyState:', document.readyState, !!document.getElementById('cpf') );
 //     document.querySelectorAll('input[id="cpf"], input[id^="dependente_cpf"]').forEach(el => {
@@ -37,6 +49,28 @@ document.addEventListener('input', e => {
     const valido = validarCPF(el.value);
     if (el.value && !valido && el.value.length === 14) {
       el.setCustomValidity('CPF inválido');
+    } else {
+      el.setCustomValidity('');
+    }
+  }
+  if (el.matches('input[id="ctps"]')) {
+    if(el.value.length> 7){
+      aplicarMascaraCPF(el);
+      const valido = validarCPF(el.value);
+      if (el.value && !valido && el.value.length === 14) {
+        el.setCustomValidity('CPF inválido');
+      } else {
+        el.setCustomValidity('');
+      }
+    }else{
+      filtroTeclas(el)
+    }
+  }
+  if (el.matches('input[id="pis_pasep"]')) {
+    aplicarMascaraPIS(el);
+    const valido = validarPIS(el.value);
+    if (el.value && !valido && el.value.length === 14) {
+      el.setCustomValidity('PIS inválido');
     } else {
       el.setCustomValidity('');
     }
@@ -67,10 +101,57 @@ function validarCPF(cpf) {
   return resto === parseInt(cpf.substring(10, 11));
 }
 
+function validarPIS(pis) {
+
+  var multiplicadorBase = "3298765432";
+  var total = 0;
+  var resto = 0;
+  var multiplicando = 0;
+  var multiplicador = 0;
+  var digito = 99;
+
+  // Retira a mascara
+  var numeroPIS = pis.replace(/[^\d]+/g, '');
+  if (numeroPIS.length !== 11 ||
+      numeroPIS === "00000000000" ||
+      numeroPIS === "11111111111" ||
+      numeroPIS === "22222222222" ||
+      numeroPIS === "33333333333" ||
+      numeroPIS === "44444444444" ||
+      numeroPIS === "55555555555" ||
+      numeroPIS === "66666666666" ||
+      numeroPIS === "77777777777" ||
+      numeroPIS === "88888888888" ||
+      numeroPIS === "99999999999"
+  ){
+    return false;
+  } else {
+      for (var i = 0; i < 10; i++) {
+          multiplicando = parseInt(numeroPIS.substring(i, i + 1));
+          multiplicador = parseInt(multiplicadorBase.substring(i, i + 1));
+          total += multiplicando * multiplicador;
+      }
+      resto = 11 - total % 11;
+      resto = resto === 10 || resto === 11 ? 0 : resto;
+      digito = parseInt("" + numeroPIS.charAt(10));
+      return resto === digito;
+  }
+}
+
 
 document.addEventListener('blur', e => {
   const el = e.target;
   if (el.matches('input[id="cpf"], input[id^="dependente_cpf"]')) {
+    if (!validarCPF(el.value) && el.value.length === 14) {
+      el.reportValidity();
+    }
+  }
+  if (el.matches('input[id="pis_pasep"]')) {
+    if (!validarPIS(el.value) && el.value.length === 14) {
+      el.reportValidity();
+    }
+  }
+  if (el.matches('input[id="ctps"]')) {
     if (!validarCPF(el.value) && el.value.length === 14) {
       el.reportValidity();
     }
