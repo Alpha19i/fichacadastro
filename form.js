@@ -20,10 +20,7 @@ async function carregarSecao(i) {
   const campos = formContent.querySelectorAll("input, select, textarea");
 
   campos.forEach((input) => {
-    const output = document.getElementById(`out_${input.id}`);
-    console.log(output);
-    
-    
+    const output = document.getElementById(`out_${input.id}`);    
     if (!!output && !!input && !!(output.textContent)) input.value = input.type === "date" && output.textContent ? output.textContent.split('/').reverse().join('-') : output.textContent.toUpperCase();
   });
 
