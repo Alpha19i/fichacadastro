@@ -47,7 +47,7 @@ function ativarEspelhamento() {
 function atualizarCampo(id) {
   const input = document.getElementById(id);
   const output = document.getElementById(`out_${id}`);
-  // input.value = input.value.toUpperCase();
+  input.value = input.value.toUpperCase();
   if (input && output) output.textContent = input.type === "date" && input.value ? input.value.split('-').reverse().join('/') : input.value.toUpperCase();
 }
 
@@ -63,7 +63,7 @@ btnProximo.addEventListener("click", () => {
       break;
     }
   }
-  // if (!valido) return;
+  if (!valido) return;
 
   if (indice < secoes.length - 1) {
     indice++;

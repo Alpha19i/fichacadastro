@@ -24,7 +24,7 @@ function aplicarMascaraCEP(input) {
   input.value = input.value
     .replace(/\D/g, '')                
     .replace(/(\d{2})(\d)/, '$1.$2')
-    .slice(0, 8)
+    .slice(0, 9)
     .replace(/(\d{3})(\d)/, '$1-$2')
 }
 function aplicarMascaraPIS(input) {
