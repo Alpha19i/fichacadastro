@@ -16,7 +16,7 @@ function aplicarMascaraCelular(input) {
   input.value = input.value
     .replace(/\D/g, '')                 
     .replace(/^(\d{2})(\d)/, '($1) $2') 
-    .slice(0, 14)                      
+    .slice(0, 13)                      
     .replace(/(\d{4,5})(\d{4})$/, '$1-$2')
 }
 

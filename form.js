@@ -16,6 +16,17 @@ async function carregarSecao(i) {
   const res = await fetch(secoes[i]);
   const html = await res.text();
   formContent.innerHTML = html;
+
+  const campos = formContent.querySelectorAll("input, select, textarea");
+
+  campos.forEach((input) => {
+    const output = document.getElementById(`out_${input.id}`);
+    console.log(output);
+    
+    
+    if (!!output && !!input && !!(output.textContent)) input.value = input.type === "date" && output.textContent ? output.textContent.split('/').reverse().join('-') : output.textContent.toUpperCase();
+  });
+
   ativarEspelhamento();
   btnAnterior.disabled = i === 0;
   btnProximo.textContent = i === secoes.length - 1 ? "Gerar PDF" : "Próximo";
@@ -28,11 +39,15 @@ function ativarEspelhamento() {
   inputs.forEach((input) => {
     input.addEventListener("input", () => atualizarCampo(input.id));
   });
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => atualizarCampo(input.id));
+  });
 }
 
 function atualizarCampo(id) {
   const input = document.getElementById(id);
   const output = document.getElementById(`out_${id}`);
+  // input.value = input.value.toUpperCase();
   if (input && output) output.textContent = input.type === "date" && input.value ? input.value.split('-').reverse().join('/') : input.value.toUpperCase();
 }
 
@@ -48,7 +63,7 @@ btnProximo.addEventListener("click", () => {
       break;
     }
   }
-  if (!valido) return;
+  // if (!valido) return;
 
   if (indice < secoes.length - 1) {
     indice++;
