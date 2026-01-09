@@ -5,6 +5,23 @@ body {
   background:#f3f3f3;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: flex-start;
+  overflow: auto;
+}
+
+.workspace {
+  min-width: 100vw;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: flex-start; /* conteúdo cresce para a direita */
+  align-items: flex-start;
+
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* #ficha {
@@ -30,13 +47,40 @@ body {
   size: A4;
   margin: 20mm;
   background: #fff;
-  max-width: 21cm;
-  max-height: 29.5cm;
-  min-height: 29.5cm;
+  width: 21cm;
+  height: 29.5cm;
   /* border: 1px solid #000; */
   padding: 20px 20px 0 20px;
   margin: auto;
   box-sizing: border-box;
+}
+.container-c {
+  display: flex;
+  flex-direction: column;
+  size: A4;
+  margin: 20mm;
+  background: #fff;
+  width: 21cm;
+  /* min-width: 21cm; */
+  min-height: 29.5cm;
+  /* min-height: 29.5cm; */
+  /* border: 1px solid #000; */
+  padding: 50px 72px 0 72px;
+  margin: auto;
+  box-sizing: border-box;
+  overflow-x: auto;
+
+}
+.container-c p{
+  margin: 0 0 10px 0;
+}
+.container-c h1{
+  padding: 5px 0 0 0;
+  margin: 0 0 10px 0;
+}
+
+hr{
+  border: none;
 }
 
 h1, h3 {
@@ -55,6 +99,28 @@ h2 {
   font-size: 14px;
   margin: 4px 0;
   font-weight: bold;
+}
+
+.text-c{
+  font-size: 16px;
+  line-height: 22px;
+  text-align: justify;
+  /* padding: 0 25px 0 25px; */
+}
+
+.l{
+  text-align: left;
+}
+.c{
+  text-align: center;
+  align-self: center;
+}
+
+ol{
+  /* margin: 0; */
+  /* padding: 0 0 0 16px; */
+  text-align: justify;
+  font-size: 16px;
 }
 
 table {
@@ -115,6 +181,12 @@ td, th {
   display: flex;
   flex-direction: row;
   padding-bottom: 10px;
+  height: 90px;
+}
+.titles-c {
+  display: flex;
+  flex-direction: row;
+  /* padding-bottom: 10px; */
   height: 90px;
 }
 .perfil {
