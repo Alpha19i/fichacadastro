@@ -6,7 +6,7 @@ const secoes = [
   "sections/observacoes.html"
 ];
 
-let indice = 0;
+let indice = 1;
 const formContent = document.getElementById("form-content");
 const btnAnterior = document.getElementById("btnAnterior");
 const btnProximo = document.getElementById("btnProximo");
@@ -46,6 +46,20 @@ function atualizarCampo(id) {
   const output = document.getElementById(`out_${id}`);
   input.value = input.value.toUpperCase();
   if (input && output) output.textContent = input.type === "date" && input.value ? input.value.split('-').reverse().join('/') : input.value.toUpperCase();
+  if (
+    id == 'nome'||
+    id == 'estado_civil'||
+    id == 'cpf'||
+    id == 'rg'||
+    id == 'endereco'||
+    id == 'bairro'||
+    id == 'cidade'
+  ){
+    // document.getElementById(id)
+     const c_name = document.getElementById(`c_${id}`) 
+     c_name.textContent = input.value.toUpperCase()
+     c_name.style.fontWeight = 'bold';
+  }
 }
 
 // ▶ Navegação
